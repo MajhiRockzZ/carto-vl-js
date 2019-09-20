@@ -1,7 +1,7 @@
 <html>
 
 <head>
-  <title>CARTO VL Example</title>
+  <title>CARTO VL</title>
   <!-- Load CARTO VL JS -->
   <script src="https://libs.cartocdn.com/carto-vl/v1.2.4/carto-vl.min.js"></script>
   <!-- Load Mapbox GL -->
@@ -22,16 +22,16 @@
   <!-- Your map will go here -->
   <div id="map"></div>
   <script>
-    carto.setDefaultAuth({
-      username: 'public',
-      apiKey: 'default_public'
-    })
-
     const map = new mapboxgl.Map({
       container: 'map',
       style: carto.basemaps.darkmatter,
       center: [0, 30],
       zoom: 2
+    })
+
+    carto.setDefaultAuth({
+      username: 'public',
+      apiKey: 'default_public'
     })
 
     // const viz = new.carto.Viz();
@@ -42,8 +42,11 @@
       color: rgb(10,185,107)
     `);
     const source = new carto.source.Dataset('world_ports')
+
     const layer = new carto.Layer('layer', source, viz);
+
     layer.addTo(map);
+
   </script>
 </body>
 
