@@ -22,12 +22,22 @@
   <!-- Your map will go here -->
   <div id="map"></div>
   <script>
+    carto.setDefaultAuth({
+      username: 'public',
+      apiKey: 'default_public'
+    })
+
     const map = new mapboxgl.Map({
       container: 'map',
       style: carto.basemaps.darkmatter,
       center: [0, 30],
       zoom: 2
     })
+
+    const viz = new.carto.Viz();
+    const source = new carto.source.Dataset('world_ports')
+    const layer = new carto.Layer('layer', source, viz);
+    layer.addTo(map);
   </script>
 </body>
 
